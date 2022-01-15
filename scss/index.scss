@@ -1,0 +1,553 @@
+@import "_colors.scss";
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: url("../img/scattered-forcefields.svg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;    
+    -webkit-font-smoothing: antialiased;
+}
+
+// --------------------- //// --------------------- //
+.index__layout {
+    height: 100%;
+
+    display: grid;
+    grid-template-areas: "area-navbar"
+                         "area-title"
+                         "area-about"
+                         "area-work"
+                         "area-contact"
+                         "area-footer";
+}
+
+// =============== NAVBAR =============== //
+.nav__layout {
+    height: 4rem;
+    width: 100%;
+    background: linear-gradient(220.55deg, #5D85A6 0%, #0E2C5E 100%);
+    box-shadow: 2px 2px 1rem 3px rgba(0, 0, 0, 0.2);
+    padding: 0 3rem;
+    user-select: none;
+    color: $color-white2;
+    z-index: 1;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & svg {
+            height: 80%;
+            width: 80%;
+        }
+    }
+    
+    &__right {
+        height: 100%;
+
+        font-family: 'Hind Madurai', sans-serif;
+        font-size: 1em;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__list {
+            width: 520px;
+            list-style: none;
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            li {
+
+                a {
+                    text-decoration: none;
+                    color: $color-white2;
+                    transition: all 0.2s linear;
+
+                    &:hover {
+                        color: $color-blue7;
+                        padding-bottom: 0.3rem;
+                        border-bottom: 1px solid $color-blue7;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// =============== HOME =============== //
+.home__layout {
+    
+    grid-area: area-title;
+
+    width: 90%;
+    height: 80vh;
+    margin: 6.5rem auto;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__info {
+        height: 80%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+
+        &__title {
+            height: 40%;
+
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+
+            & h1 {
+                font-family: 'Inconsolata', monospace;
+                font-size: 10.5em;
+                color: $color-blue5;
+                text-shadow: 8px 8px 1px $color-gray-150;
+
+                padding: 1rem;
+                background:
+                    linear-gradient(to right, black 2px, transparent 2px) 0 0,
+                    linear-gradient(to right, black 2px, transparent 2px) 0 100%,
+                    linear-gradient(to left, black 2px, transparent 2px) 100% 0,
+                    linear-gradient(to left, black 2px, transparent 2px) 100% 100%,
+                    linear-gradient(to bottom, black 2px, transparent 2px) 0 0,
+                    linear-gradient(to bottom, black 2px, transparent 2px) 100% 0,
+                    linear-gradient(to top, black 2px, transparent 2px) 0 100%,
+                    linear-gradient(to top, black 2px, transparent 2px) 100% 100%;
+
+                background-repeat: no-repeat;
+                background-size: 15px 15px;
+            }
+        
+            & h4 {
+                margin-top: 2rem;
+                padding-left: 0.75rem;
+                font-size: 1.15em;
+                color: $color-black3;
+                text-align: center;
+
+                & span {
+                    opacity: 0.35;
+                }
+            }
+        }
+
+        &__goto-about {
+            font-size: 1.2rem;
+            color: $color-blue6;
+            text-decoration: none;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            & svg {
+                height: 2rem;
+                width: 2rem;
+                margin-top: 0.5rem;
+
+                animation: push-down 1.5s linear infinite;
+            }
+        }
+    }
+    
+    & img {
+        height: 100%;
+    }
+}
+
+@keyframes push-down {
+    
+    to {
+        transform: translateY(5px);
+    }
+}
+
+// =============== ABOUT ME =============== //
+.about__layout {
+
+    grid-area: area-about;
+
+    height: 100%;
+    width: 100%;
+    
+    display: grid;
+    grid-template-areas: "about-title"
+                         "about-general"
+                         "about-skills";
+    
+    &__info {
+        height: 75%;
+        width: 80%;
+        margin: 5rem auto;
+        padding: 2rem 0;
+        position: relative;
+
+        &__picture {
+            width: 20rem;
+            height: 20rem;
+            position: absolute;
+            overflow: hidden;
+            border-radius: 50%;
+            top: 3rem;
+            right: 3rem;
+            box-shadow: 0 0 0.7rem $color-black3;
+
+            & .profile-pic {
+                display: inline;
+                margin: 0 auto;
+                margin-left: -25%;
+                height: 120%;
+                width: auto;
+            }
+        }
+
+        &__title {
+
+            grid-area: about-title;
+
+            width: fit-content;
+            margin: 0 2rem;
+            font-size: 2.5em;
+            color: $color-blue5;
+            position: relative;
+            user-select: none;
+            text-shadow: 2px 2px 1px $color-gray-150;
+
+            &::before {
+                content: "";
+                height: 2px;
+                width: 2rem;
+                background-color: $color-gray-300;
+                transition: all 0.4s ease;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
+            &:hover::before {
+                width: 100%;
+                background-color: $color-blue5;
+            }
+
+            & svg {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+
+        &__general {
+
+            grid-area: about-general;
+
+            width: 60%;
+            margin: 2rem 2rem;
+            font-size: 1em;
+            line-height: 2;
+            color: $color-gray-750;
+            
+
+            span {
+                color: $color-blue7;
+            }
+
+            &__link {
+                text-decoration: none;
+                color: $color-blue7;
+
+                &:hover {
+                    border-bottom: 1px solid $color-blue7;
+                }
+            }
+        }
+
+        &__skills {
+
+            grid-area: about-skills;
+
+            width: 80%;
+            margin: 2rem 2rem;
+            font-size: 1em;
+            line-height: 2;
+
+            &__title {
+                color: $color-blue7;
+                font-size: 1em;
+
+                & svg {
+                    transform: translateY(5px);
+                }
+            }
+
+            &__techs {
+                color: $color-gray-800;
+                font-family: 'Roboto Mono', monospace;
+                font-size: 0.9em;
+                margin-left: 1rem;
+                width: fit-content;
+
+                ul {
+                    margin-top: 1rem;
+                    list-style: none;
+                    
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    place-items: start auto;
+                    column-gap: 4rem;
+
+                    li::before {
+                        content: "\2666";
+                        width: 1.1em;
+                        display: inline-block;
+                        margin-left: -1em;
+                        color: $color-blue7;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// =============== WORK EXPERIENCE =============== //
+.work__layout {
+
+    grid-area: area-work;
+
+    height: 100%;
+    width: 100%;
+    
+    display: grid;
+    grid-template-areas: "work-title"
+                         "work-general";
+    
+    &__info {
+        height: 75%;
+        width: 80%;
+        margin: 5rem auto;
+        padding: 2rem 0;
+
+        //outline: 1px solid rebeccapurple;
+
+        &__title {
+
+            grid-area: work-title;
+
+            width: fit-content;
+            margin: 0 0 4rem 2rem;
+            font-size: 2.5em;
+            color: $color-blue5;
+            position: relative;
+            user-select: none;
+            text-shadow: 2px 2px 1px $color-gray-150;
+
+            &::before {
+                content: "";
+                height: 2px;
+                width: 2rem;
+                background-color: $color-gray-300;
+                transition: all 0.4s ease;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
+            &:hover::before {
+                width: 100%;
+                background-color: $color-blue5;
+            }
+
+            & svg {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+
+        &__general {
+
+            grid-area: work-general;
+        }
+    }
+}
+
+.timeline {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline__line {
+    height: 95%;
+    position: absolute;
+    left: 16px;
+    top: 6px;
+    border-right: 2px solid $color-gray-150;
+}
+
+.timeline__items {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.timeline__item {
+    margin-bottom: 2.8rem;
+}
+
+.timeline__top {
+    display: flex;
+    align-items: center;
+}
+
+.timeline__circle {
+    height: 32px;
+    width: 32px;
+    background-color: $color-gray-150;
+    border-radius: 50%;
+}
+
+.timeline__main-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.last-timeline {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.timeline__title {
+    font-size: 1.25rem;
+    margin-left: 1rem;
+    color: $color-blue7;
+}
+
+.timeline__subtitle {
+    font-size: 0.85rem;
+    margin: 0.1rem 0 0 1rem;
+    color: $color-black2;
+}
+
+.timeline__desc {
+    width: 80%;
+    margin: 1.5rem 0 0 3rem;
+    color: $color-black4;
+
+    & p {
+        margin-bottom: 0.5rem;
+    }
+}
+
+// =============== PROJECTS =============== //
+.contact-me__layout {
+
+    grid-area: area-contact;
+
+    height: 100%;
+    width: 100%;
+    padding: 7rem;
+    color: $color-black2;
+
+    &__info {
+        height: 100%;
+        width: 80%;
+        margin: 0 auto;
+        padding: 4rem 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        &__title {
+            width: fit-content;
+            color: $color-blue5;
+            font-size: 3em;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            user-select: none;
+            text-shadow: 2px 2px 1px $color-gray-150;
+    
+            &::before {
+                content: "";
+                height: 2px;
+                width: 2rem;
+                background-color: $color-gray-300;
+                transition: all 0.4s ease;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+    
+            &:hover::before {
+                width: 100%;
+                background-color: $color-blue5;
+            }
+
+            & svg {
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+    
+        &__subtitle {
+            line-height: 1.7;
+            width: 90%;
+            text-align: center;
+        }
+    }
+}
+
+// =============== FOOTER =============== //
+.footer__layout {
+    
+    grid-area: area-footer;
+
+    height: 4rem;
+    font-family: 'Roboto Mono', monospace;
+    user-select: none;
+
+    display: grid;
+    place-items: center;
+
+    a {
+        color: $color-blue5;
+        text-decoration: none;
+    }
+}
